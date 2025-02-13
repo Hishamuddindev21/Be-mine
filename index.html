@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Mine? 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            color: #ff4081;
+            font-size: 2.5em;
+        }
+        .heart {
+            font-size: 100px;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+            position: absolute;
+        }
+    </style>
+    <script>
+        let noClickCount = 0;
+        
+        function moveNoButton() {
+            var x = Math.random() * (window.innerWidth - 100);
+            var y = Math.random() * (window.innerHeight - 50);
+            var noButton = document.getElementById("noButton");
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+            
+            noClickCount++;
+            if (noClickCount >= 3) {
+                noButton.style.display = 'none';
+                document.getElementById("yesButton").innerHTML = "Fine, Yes! 💖";
+            }
+        }
+        function sayYes() {
+            document.body.innerHTML = '<h1>Yay! 💖 I Love You!</h1>';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be mine? 💕</h1>
+        <div class="heart">❤️</div>
+        <div class="buttons">
+            <button class="yes" id="yesButton" onclick="sayYes()">Yes! 💖</button>
+            <button class="no" id="noButton" onmouseover="moveNoButton()">No 😢</button>
+        </div>
+    </div>
+</body>
+</html>
